@@ -19,6 +19,9 @@ salling_group_food_waste{offer_currency="DKK",offer_discount="10.75",offer_ean="
 ## API Key
 This exporter requires a Salling Group API key that has `/v1/food-waste/**` scope.
 The API key can be set through the `FW_EXPORTER_API_KEY` environment variable.
+```
+export FW_EXPORTER_API_KEY=<YOUR_API_KEY>
+```
 
 ## Zip Codes
 To configure which zip codes to get metrics form, set the `FW_EXPORTER_ZIP_CODES` environment variable. 
