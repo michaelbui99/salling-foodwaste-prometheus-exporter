@@ -20,9 +20,13 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    implementation(platform(libs.log4j.bom))
+
     implementation libs.guava
     implementation libs.prometheus.metrics.core
     implementation libs.prometheus.metrics.exporter.httpserver
+    implementation 'org.apache.logging.log4j:log4j-api:${log4j-api.version}'
+    implementation 'org.apache.logging.log4j:log4j-core:${log4j-core.version}'
 }
 
 def MAIN_CLASS = 'dk.michaelbui.salling.foodwaste.prometheus.exporter.App'
@@ -36,9 +40,13 @@ java {
     jar {
         manifest {
             attributes(
-                    "Main-Class": MAIN_CLASS
+                    "Main-Class": MAIN_CLASS,
+                    // Required for log4j to work
+                    'Multi-Release': 'true'
             )
         }
+
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
         from {
             configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
