@@ -20,14 +20,21 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-    implementation(platform(libs.log4j.bom))
 
     implementation libs.guava
+
+    // Prometheus
     implementation libs.prometheus.metrics.core
     implementation libs.prometheus.metrics.exporter.httpserver
+
+    // JSON Serialization
     implementation libs.gson
-    implementation 'org.apache.logging.log4j:log4j-api:${log4j-api.version}'
-    implementation 'org.apache.logging.log4j:log4j-core:${log4j-core.version}'
+
+    // Logging
+    implementation(platform(libs.log4j.bom))
+    implementation 'org.apache.logging.log4j:log4j-api'
+    runtimeOnly 'org.apache.logging.log4j:log4j-core'
+//    runtimeOnly 'org.apache.logging.log4j:log4j-layout-template-json'
 }
 
 def MAIN_CLASS = 'dk.michaelbui.salling.foodwaste.prometheus.exporter.App'
@@ -42,8 +49,6 @@ java {
         manifest {
             attributes(
                     "Main-Class": MAIN_CLASS,
-                    // Required for log4j to work
-                    'Multi-Release': 'true'
             )
         }
 
