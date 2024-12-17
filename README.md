@@ -8,7 +8,7 @@ The exporter publishes a metric for each `Clearance` for each `FoodWaste` return
 
 Metrics: 
 - `salling_group_food_waste_clearance`
-  -  The value of the metric specifies the new price of the product, i.e. price after discount has been applied.
+  -  The value of the metric reflects the new price of the product, i.e. price after discount has been applied.
 
 ## Example
 ```
