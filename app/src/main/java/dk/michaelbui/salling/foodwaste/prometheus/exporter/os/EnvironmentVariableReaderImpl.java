@@ -6,7 +6,7 @@ public class EnvironmentVariableReaderImpl  implements EnvironmentVariableReader
         try{
             String val = System.getenv(environmentVariable);
             if (val == null){
-                return val = defaultValue;
+                return defaultValue;
             }
             return val;
         }catch (Exception e){
