@@ -16,12 +16,17 @@ salling_group_food_waste{offer_currency="DKK",offer_discount="10.75",offer_ean="
 ```
 
 # Configuration
-This exporter requires a Salling Group API Token that has `/v1/food-waste/**` scope.
-The API Token can be set through the `FW_EXPORTER_API_KEY` environment variable.
+## API Key
+This exporter requires a Salling Group API key that has `/v1/food-waste/**` scope.
+The API key can be set through the `FW_EXPORTER_API_KEY` environment variable.
 
+## Zip Codes
 To configure which zip codes to get metrics form, set the `FW_EXPORTER_ZIP_CODES` environment variable. 
 Example: 
 ```
 export FW_EXPORTER_ZIP_CODES='["8230"]'
 ```
 The exporter invokes a GET `/v1/food-waste?zip=<ZIP>` for each zip code specified in the `FW_EXPORTER_ZIP_CODES` on each scrape. 
+
+
+
