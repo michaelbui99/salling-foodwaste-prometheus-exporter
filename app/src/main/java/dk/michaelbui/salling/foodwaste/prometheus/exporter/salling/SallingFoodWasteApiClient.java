@@ -16,7 +16,7 @@ import java.util.List;
 public class SallingFoodWasteApiClient {
     private String url = "";
     private String apiKey = "";
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     public SallingFoodWasteApiClient(String url, String apiKey) {
         this.url = url;

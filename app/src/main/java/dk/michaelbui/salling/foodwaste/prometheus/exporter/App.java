@@ -17,8 +17,8 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
         Logger logger = LogManager.getLogger(App.class);
-        ExporterConfig config = getConfig();
 
+        ExporterConfig config = getConfig();
         SallingFoodWasteApiClient apiClient = new SallingFoodWasteApiClient(config.getFoodWasteApiURL(), config.getFoodWasteApiKey());
         FoodWasteClearanceMetric.init(apiClient, config);
 
