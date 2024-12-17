@@ -1,10 +1,8 @@
 package dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.dtos;
 
-import java.math.BigDecimal;
-
 public class Offer {
     private String currency;
-    private int discount;
+    private float discount;
     private String ean;
     private String endTime;
     private String lastUpdate;
@@ -19,7 +17,7 @@ public class Offer {
         return currency;
     }
 
-    public int getDiscount() {
+    public float getDiscount() {
         return discount;
     }
 
@@ -63,7 +61,7 @@ public class Offer {
         this.currency = currency;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(float discount) {
         this.discount = discount;
     }
 

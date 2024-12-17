@@ -2,7 +2,7 @@ package dk.michaelbui.salling.foodwaste.prometheus.exporter;
 
 import com.google.gson.Gson;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.config.ExporterConfig;
-import dk.michaelbui.salling.foodwaste.prometheus.exporter.models.FoodWasteMetric;
+import dk.michaelbui.salling.foodwaste.prometheus.exporter.models.FoodWasteClearanceMetric;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariableReader;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariableReaderImpl;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariables;
@@ -20,7 +20,7 @@ public class App {
         ExporterConfig config = getConfig();
 
         SallingFoodWasteApiClient apiClient = new SallingFoodWasteApiClient(config.getFoodWasteApiURL(), config.getFoodWasteApiKey());
-        FoodWasteMetric.init(apiClient, config);
+        FoodWasteClearanceMetric.init(apiClient, config);
 
         HTTPServer server = HTTPServer.builder()
                 .port(config.getPort())

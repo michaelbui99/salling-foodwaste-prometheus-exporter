@@ -4,19 +4,18 @@ import dk.michaelbui.salling.foodwaste.prometheus.exporter.config.ExporterConfig
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.SallingFoodWasteApiClient;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.dtos.Clearance;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.dtos.FoodWaste;
-import io.prometheus.metrics.core.metrics.Gauge;
 import io.prometheus.metrics.core.metrics.GaugeWithCallback;
 
 import java.util.List;
 
-public class FoodWasteMetric {
+public class FoodWasteClearanceMetric {
     private static GaugeWithCallback GAUGE;
     private ExporterConfig config;
 
-    public FoodWasteMetric(SallingFoodWasteApiClient foodWasteApiClient, ExporterConfig config) {
+    public FoodWasteClearanceMetric(SallingFoodWasteApiClient foodWasteApiClient, ExporterConfig config) {
         GaugeWithCallback foodWasteGauge = GaugeWithCallback.builder()
-                .name("salling_group_food_waste")
-                .help("Salling Group Food Waste Metric")
+                .name("salling_group_food_waste_clearance")
+                .help("Salling Group Food Waste Clearance Metric")
                 .labelNames("offer_currency", "offer_discount", "offer_ean",
                         "offer_end_time", "offer_last_update", "offer_original_price",
                         "offer_percent_discount", "offer_start_time", "offer_stock", "offer_stock_unit",
