@@ -1,3 +1,7 @@
+{{- if or (not $.Values.exporter.apiKeySecretRef) (or (not $.Values.exporter.apiKeySecretRef.key) (not $.Values.exporter.apiKeySecretRef.name)) }}
+ {{ fail "apiKeySecretRef must be set" }}
+{{- end }}
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -29,6 +33,14 @@ spec:
                   name: salling-foodwaste-prometheus-exporter
                   ports:
                     - containerPort: {{ $.Values.exporter.containerPort }}
+                  env:
+                    - name: "FW_EXPORTER_PORT"
+                      value: {{ $.Values.exporter.containerPort  | quote}}
+                    - name: "FW_EXPORTER_API_KEY"
+                      valueFrom:
+                        secretKeyRef:
+                          name: {{ $.Values.exporter.apiKeySecretRef.name }}
+                          key: {{ $.Values.exporter.apiKeySecretRef.key }}
                   livenessProbe:
                     httpGet:
                         path: /healthy

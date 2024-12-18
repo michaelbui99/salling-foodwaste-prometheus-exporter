@@ -14,6 +14,13 @@ exporter:
 
   imagePullSecrets: []
 
+  # Used to set the FW_EXPORTER_API_KEY environment variable
+  apiKeySecretRef:
+    # Name of the secret containing the API key
+    name: 
+    # Key in the secret that contains the API key
+    key: 
+
   service:
     enable: true
     servicePort: 80
