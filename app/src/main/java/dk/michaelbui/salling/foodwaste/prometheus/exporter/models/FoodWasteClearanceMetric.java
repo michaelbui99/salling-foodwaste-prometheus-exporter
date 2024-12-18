@@ -21,7 +21,7 @@ public class FoodWasteClearanceMetric {
         PERCENT_DISCOUNT_GAUGE = GaugeWithCallback.builder()
                 .name("salling_group_food_waste_percent_discount")
                 .help("Salling Group Food Waste Percent Discount")
-                .labelNames("offer_currency", "offer_ean",
+                .labelNames("offer_new_price", "offer_currency", "offer_ean",
                         "offer_end_time", "offer_original_price",
                         "offer_start_time", "offer_stock", "offer_stock_unit",
                         "product_description", "product_ean",
@@ -39,6 +39,7 @@ public class FoodWasteClearanceMetric {
                             for (FoodWaste foodWaste : foodWastesInZipCode) {
                                 for (Clearance clearance : foodWaste.getClearances()) {
                                     callback.call(clearance.getOffer().getPercentDiscount(),
+                                            String.valueOf(clearance.getOffer().getNewPrice()),
                                             clearance.getOffer().getCurrency(), clearance.getOffer().getEan(),
                                             clearance.getOffer().getEndTime(), String.valueOf(clearance.getOffer().getOriginalPrice()),
                                             clearance.getOffer().getStartTime(), String.valueOf(clearance.getOffer().getStock()), clearance.getOffer().getStockUnit(),
@@ -57,7 +58,7 @@ public class FoodWasteClearanceMetric {
         DISCOUNT_GAUGE = GaugeWithCallback.builder()
                 .name("salling_group_food_waste_discount")
                 .help("Salling Group Food Waste Discount")
-                .labelNames("offer_currency", "offer_ean",
+                .labelNames("offer_new_price","offer_currency", "offer_ean",
                         "offer_end_time", "offer_original_price",
                         "offer_start_time", "offer_stock", "offer_stock_unit",
                         "product_description", "product_ean",
@@ -75,6 +76,7 @@ public class FoodWasteClearanceMetric {
                             for (FoodWaste foodWaste : foodWastesInZipCode) {
                                 for (Clearance clearance : foodWaste.getClearances()) {
                                     callback.call(clearance.getOffer().getDiscount(),
+                                            String.valueOf(clearance.getOffer().getNewPrice()),
                                             clearance.getOffer().getCurrency(), clearance.getOffer().getEan(),
                                             clearance.getOffer().getEndTime(), String.valueOf(clearance.getOffer().getOriginalPrice()),
                                             clearance.getOffer().getStartTime(), String.valueOf(clearance.getOffer().getStock()), clearance.getOffer().getStockUnit(),
@@ -93,7 +95,7 @@ public class FoodWasteClearanceMetric {
         NEW_PRICE_GAUGE = GaugeWithCallback.builder()
                 .name("salling_group_food_waste_new_price")
                 .help("Salling Group Food Waste New Price")
-                .labelNames("offer_currency", "offer_ean",
+                .labelNames("offer_percent_discount","offer_currency", "offer_ean",
                         "offer_end_time", "offer_original_price",
                         "offer_start_time", "offer_stock", "offer_stock_unit",
                         "product_description", "product_ean",
@@ -111,6 +113,7 @@ public class FoodWasteClearanceMetric {
                             for (FoodWaste foodWaste : foodWastesInZipCode) {
                                 for (Clearance clearance : foodWaste.getClearances()) {
                                     callback.call(clearance.getOffer().getNewPrice(),
+                                            String.valueOf(clearance.getOffer().getPercentDiscount()),
                                             clearance.getOffer().getCurrency(), clearance.getOffer().getEan(),
                                             clearance.getOffer().getEndTime(), String.valueOf(clearance.getOffer().getOriginalPrice()),
                                             clearance.getOffer().getStartTime(), String.valueOf(clearance.getOffer().getStock()), clearance.getOffer().getStockUnit(),
