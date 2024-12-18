@@ -3,6 +3,8 @@ A Prometheus Exporter that exports Salling Group Food Waste clearances as gauge 
 
 I created this for a bit hacky discount monitoring setup where I use Prometheus Alert Manager to send me alerts regarding food discounts in the store near me.
 
+![img.png](docs/grafana-example.png)
+
 # Published Metrics
 The exporter publishes a metric for each `Clearance` for each `FoodWaste` returned from each `/v1/food-waste?zip=<ZIP>` API call.
 
