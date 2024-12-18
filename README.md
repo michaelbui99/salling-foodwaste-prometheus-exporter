@@ -39,5 +39,7 @@ export FW_EXPORTER_ZIP_CODES='["8230"]'
 ```
 The exporter invokes a GET `/v1/food-waste?zip=<ZIP>` for each zip code specified in the `FW_EXPORTER_ZIP_CODES` on each scrape. 
 
-
+## Caching
+The exporter caches the result of GET `/v1/food-waste?zip=<ZIP>` to prevent excessive API calls.
+Cache invalidation can be configured using the `FW_EXPORTER_CACHE_INVALIDATION_THRESHOLD`, which configures how many minutes data for a given zip code should be cached.
 
