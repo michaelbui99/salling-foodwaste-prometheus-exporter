@@ -11,17 +11,19 @@ public class ExporterConfig {
     private final String foodWasteApiURL;
     private final String foodWasteApiKey;
     private final List<String> zipCodes;
+    private final long cacheInvalidationThreshold;
     private final int port;
 
-    public ExporterConfig(String foodWasteApiURL, String foodWasteApiKey, List<String> zipCodes, String port) {
-        this(foodWasteApiURL, foodWasteApiKey, zipCodes, Integer.parseInt(port));
+    public ExporterConfig(String foodWasteApiURL, String foodWasteApiKey, List<String> zipCodes, String port, String cacheInvalidationThreshold) {
+        this(foodWasteApiURL, foodWasteApiKey, zipCodes, Integer.parseInt(port), Long.parseLong(cacheInvalidationThreshold));
     }
 
-    public ExporterConfig(String foodWasteApiURL, String foodWasteApiKey, List<String> zipCodes, int port) {
+    public ExporterConfig(String foodWasteApiURL, String foodWasteApiKey, List<String> zipCodes, int port, long cacheInvalidationThreshold) {
         this.foodWasteApiURL = foodWasteApiURL;
         this.foodWasteApiKey = foodWasteApiKey;
         this.zipCodes = zipCodes;
         this.port = port;
+        this.cacheInvalidationThreshold = cacheInvalidationThreshold;
 
         if (foodWasteApiKey == null || foodWasteApiKey.isBlank()) {
             throw new InvalidConfigException(String.format("Missing required Salling Group API key (%s)", EnvironmentVariables.FW_EXPORTER_API_KEY));
@@ -42,5 +44,9 @@ public class ExporterConfig {
 
     public int getPort() {
         return port;
+    }
+
+    public long getCacheInvalidationThreshold() {
+        return cacheInvalidationThreshold;
     }
 }

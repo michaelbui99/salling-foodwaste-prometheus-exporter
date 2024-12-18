@@ -6,6 +6,8 @@ import dk.michaelbui.salling.foodwaste.prometheus.exporter.models.FoodWasteClear
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariableReader;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariableReaderImpl;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.os.EnvironmentVariables;
+import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.CachedFoodWasteApiClient;
+import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.SallingFoodWasteApi;
 import dk.michaelbui.salling.foodwaste.prometheus.exporter.salling.SallingFoodWasteApiClient;
 import io.prometheus.metrics.exporter.httpserver.HTTPServer;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +21,7 @@ public class App {
         Logger logger = LogManager.getLogger(App.class);
 
         ExporterConfig config = getConfig();
-        SallingFoodWasteApiClient apiClient = new SallingFoodWasteApiClient(config.getFoodWasteApiURL(), config.getFoodWasteApiKey());
+        SallingFoodWasteApi apiClient = new CachedFoodWasteApiClient(new SallingFoodWasteApiClient(config.getFoodWasteApiURL(), config.getFoodWasteApiKey()));
         FoodWasteClearanceMetric.init(apiClient, config);
 
         HTTPServer server = HTTPServer.builder()
@@ -38,7 +40,8 @@ public class App {
                 environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_API_URL, "https://api.sallinggroup.com/v1/food-waste"),
                 environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_API_KEY, ""),
                 gson.fromJson(environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_ZIP_CODES, "[]"), List.class),
-                environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_PORT, "8080")
+                environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_PORT, "8080"),
+                environmentVariableReader.read(EnvironmentVariables.FW_EXPORTER_CACHE_INVALIDATION_THRESHOLD, "5")
         );
     }
 }

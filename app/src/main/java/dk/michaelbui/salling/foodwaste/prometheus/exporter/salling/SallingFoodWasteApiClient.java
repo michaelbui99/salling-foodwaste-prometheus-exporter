@@ -13,7 +13,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-public class SallingFoodWasteApiClient {
+public class SallingFoodWasteApiClient implements SallingFoodWasteApi {
     private String url = "";
     private String apiKey = "";
     private final Gson gson = new Gson();
