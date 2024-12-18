@@ -30,6 +30,7 @@ exporter:
     enable: false
 
 serviceMonitor:
+  serviceMonitorSelector: "prometheus"
   enable: true
   namespaceSelector:
     matchNames: []
