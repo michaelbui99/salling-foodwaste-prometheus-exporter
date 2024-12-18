@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        {{- include "exporter.labels" $ | nindent 8 }}
+    name: {{ include "exporter.fullname" $ }}
+spec:
+    imagePullSecrets:
+    {{- range $secret := $.Values.exporter.imagePullSecrets }}
+        - name: {{ $secret }}
+    {{- end }}
+    replicas: {{ $.Values.exporter.replicas }}
+    selector:
+        matchLabels:
+            app: {{ include "exporter.fullname" $ }}
+    template:
+        metadata:
+            labels: 
+            {{- include "exporter.labels" $ | nindent 16 }}
+            {{- if $.Values.exporter.podAnnotations }}
+            annotations:
+            {{- range $k, $v := .Values.exporter.podAnnotations}}
+            {{- printf "%s: %s" $k ($v | quote) | nindent 16 }}
+            {{- end }}
+            {{- end }}
+        spec:
+            containers:
+                - image: {{ $.Values.exporter.image }}:{{ $.Values.exporter.tag }}
+                  name: salling-foodwaste-prometheus-exporter
+                  ports:
+                    - containerPort: {{ $.Values.exporter.containerPort }}
+                  liveness:
+                    httpGet:
+                        path: /healthy
+                        port: {{ $.Values.exporter.containerPort }}
+                        initialDelaySeconds: 5
+                        periodSeconds: 10
+                        timeoutSeconds: 1
+                        successThreshold: 1
+                        failureThreshold: 3
+                  readiness:
+                    httpGet:
+                        path: /healthy
+                        port: {{ $.Values.exporter.containerPort }}
+                        initialDelaySeconds: 5
+                        periodSeconds: 10
+                        timeoutSeconds: 1
+                        successThreshold: 1
+                        failureThreshold: 3

@@ -1,0 +1,4 @@
+apiVersion: v2
+name: salling-foodwaste-prometheus-exporter
+description: A Helm Chart for deploying salling-foodwaste-prometheus-exporter
+version: 0.1.0

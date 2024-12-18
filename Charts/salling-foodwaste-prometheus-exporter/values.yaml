@@ -1,0 +1,23 @@
+
+nameOverride: ""
+fullnameOverride: ""
+
+exporter:
+  image: michaelbui99/salling-foodwaste-prometheus-exporter
+  tag: latest
+  containerPort: 8080
+
+  labels: {}
+  podAnnotations: {}
+
+  replicas: 1
+
+  imagePullSecrets: []
+
+  service:
+    enable: true
+    servicePort: 80
+
+  ingress:
+    enable: false
+
