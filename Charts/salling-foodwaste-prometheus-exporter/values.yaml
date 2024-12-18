@@ -1,5 +1,6 @@
 nameOverride: ""
 fullnameOverride: ""
+namespaceOverride: ""
 
 exporter:
   image: michaelbui99/salling-foodwaste-prometheus-exporter
@@ -21,11 +22,16 @@ exporter:
     key: 
 
   zipCodes: []
-    # - 8230
 
   service:
     enable: true
-    servicePort: 80
 
   ingress:
     enable: false
+
+serviceMonitor:
+  enable: true
+  namespaceSelector:
+    matchNames: []
+  scrapeInterval: 2h
+    

@@ -5,11 +5,12 @@ metadata:
   name: {{ include "exporter.fullname" $ }}
   labels:
     {{- include "exporter.labels" . | nindent 4 }}
+  namespace: {{ include "exporter.namespace" $ }}
 spec:
   selector:
     app: {{ include "exporter.fullname" $ | quote }}
   ports:
   - protocol: TCP
-    port: {{ $.Values.exporter.service.servicePort }}
+    port: {{ $.Values.exporter.containerPort }}
     targetPort: {{ .Values.exporter.containerPort | required "A container port is required." }}
 {{- end }}
