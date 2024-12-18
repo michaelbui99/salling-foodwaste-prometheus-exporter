@@ -6,6 +6,7 @@ I created this for a bit hacky discount monitoring setup where I use Prometheus 
 # Published Metrics
 The exporter publishes a metric for each `Clearance` for each `FoodWaste` returned from each `/v1/food-waste?zip=<ZIP>` API call.
 
+TODO: Split into multiple metrics instead of just bunching everything together in the labels
 Metrics: 
 - `salling_group_food_waste_clearance`
   -  The value of the metric reflects the new price of the product, i.e. price after discount has been applied.
