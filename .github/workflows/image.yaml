@@ -28,8 +28,14 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: "Build image"
+      - name: "Build image - SHA"
         run: docker build -t "$CONTAINER_REPO"/"$IMAGE_NAME":"$IMAGE_TAG" .
+
+      - name: "Build image - latest"
+        run: docker build -t "$CONTAINER_REPO"/"$IMAGE_NAME":latest .
       
-      - name: "Push image"
+      - name: "Push image - SHA"
         run: docker push "$CONTAINER_REPO"/"$IMAGE_NAME":"$IMAGE_TAG"
+
+      - name: "Push image - latest"
+        run: docker push "$CONTAINER_REPO"/"$IMAGE_NAME":latest
