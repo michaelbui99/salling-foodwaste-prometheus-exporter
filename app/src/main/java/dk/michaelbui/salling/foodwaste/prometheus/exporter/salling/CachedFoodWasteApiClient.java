@@ -47,6 +47,7 @@ public class CachedFoodWasteApiClient implements SallingFoodWasteApi {
             return fetchAndUpdateCache(zip);
         }
 
+        LOGGER.info("Cache hit");
         return this.cache.get(zip);
     }
 

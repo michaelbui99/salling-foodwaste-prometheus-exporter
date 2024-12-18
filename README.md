@@ -8,12 +8,15 @@ The exporter publishes a metric for each `Clearance` for each `FoodWaste` return
 
 TODO: Split into multiple metrics instead of just bunching everything together in the labels
 Metrics: 
-- `salling_group_food_waste_clearance`
-  -  The value of the metric reflects the new price of the product, i.e. price after discount has been applied.
+- `salling_group_food_waste_percent_discount`
+- `salling_group_food_waste_percent_new_price`
+- `salling_group_food_waste_percent_discount`
 
-## Example
+## Examples
 ```
-salling_group_food_waste{offer_currency="DKK",offer_discount="10.75",offer_ean="5712580370088",offer_end_time="2024-12-19T22:59:59.000Z",offer_last_update="2024-12-17T16:05:08.000Z",offer_original_price="22.75",offer_percent_discount="47.25",offer_start_time="2024-12-17T15:53:07.000Z",offer_stock="2",offer_stock_unit="each",product_description="SOLSKINSBOLLER KOHBERG",product_ean="5701246006195",store_address_city="Åbyhøj",store_address_country="DK",store_address_street="Silkeborgvej 246",store_address_zip="8230",store_brand="netto",store_id="67766b50-4cc6-4658-8fc4-a9b2db468f91",store_name="Netto Åbyhøj, Silkeborgvej"} 12.0
+salling_group_food_waste_percent_discount{container="salling-foodwaste-prometheus-exporter",endpoint="8080",instance="10.103.88.168:8080",job="salling-foodwaste-prometheus-exporter",namespace="monitoring",offer_currency="DKK",offer_ean="5712580368382",offer_end_time="2024-12-19T22:59:59.000Z",offer_original_price="16.0",offer_start_time="2024-12-16T12:16:40.000Z",offer_stock="1",offer_stock_unit="each",pod="salling-foodwaste-prometheus-exporter-cc5bd5fbd-tbq5g",product_description="ØKO SKUMMETMÆLK LØGISMOSE",product_ean="5710328002864",service="salling-foodwaste-prometheus-exporter",store_address_city="Åbyhøj",store_address_country="DK",store_address_street="Silkeborgvej 246",store_address_zip="8230",store_brand="netto",store_id="67766b50-4cc6-4658-8fc4-a9b2db468f91",store_name="Netto Åbyhøj, Silkeborgvej"}
+salling_group_food_waste_new_price{container="salling-foodwaste-prometheus-exporter",endpoint="8080",instance="10.103.88.168:8080",job="salling-foodwaste-prometheus-exporter",namespace="monitoring",offer_currency="DKK",offer_ean="5712580363066",offer_end_time="2024-12-28T22:59:59.000Z",offer_original_price="109.0",offer_start_time="2024-12-11T06:27:35.000Z",offer_stock="1",offer_stock_unit="each",pod="salling-foodwaste-prometheus-exporter-cc5bd5fbd-tbq5g",product_description="GULD 45+ MAMMEN",product_ean="5703985055052",service="salling-foodwaste-prometheus-exporter",store_address_city="Åbyhøj",store_address_country="DK",store_address_street="Silkeborgvej 246",store_address_zip="8230",store_brand="netto",store_id="67766b50-4cc6-4658-8fc4-a9b2db468f91",store_name="Netto Åbyhøj, Silkeborgvej"}
+salling_group_food_waste_discount{container="salling-foodwaste-prometheus-exporter",endpoint="8080",instance="10.103.88.168:8080",job="salling-foodwaste-prometheus-exporter",namespace="monitoring",offer_currency="DKK",offer_ean="5712580363066",offer_end_time="2024-12-28T22:59:59.000Z",offer_original_price="109.0",offer_start_time="2024-12-11T06:27:35.000Z",offer_stock="1",offer_stock_unit="each",pod="salling-foodwaste-prometheus-exporter-cc5bd5fbd-tbq5g",product_description="GULD 45+ MAMMEN",product_ean="5703985055052",service="salling-foodwaste-prometheus-exporter",store_address_city="Åbyhøj",store_address_country="DK",store_address_street="Silkeborgvej 246",store_address_zip="8230",store_brand="netto",store_id="67766b50-4cc6-4658-8fc4-a9b2db468f91",store_name="Netto Åbyhøj, Silkeborgvej"}
 ```
 
 # Deployment
