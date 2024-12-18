@@ -1,7 +1,7 @@
 FROM gradle:8-jdk21 as build
 WORKDIR /build
 COPY . .
-RUN ./gradlew clean build
+RUN gradle clean build
 
 FROM amazoncorretto:21
 WORKDIR /app
