@@ -36,6 +36,9 @@ spec:
                   env:
                     - name: "FW_EXPORTER_PORT"
                       value: {{ $.Values.exporter.containerPort  | quote}}
+                      {{- $zipCodes := join ", " $.Values.exporter.zipCodes }}
+                    - name: "FW_EXPORTER_ZIP_CODES"
+                      value: '[ "{{ $zipCodes }}" ]'
                     - name: "FW_EXPORTER_API_KEY"
                       valueFrom:
                         secretKeyRef:

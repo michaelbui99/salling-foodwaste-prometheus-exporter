@@ -1,4 +1,3 @@
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -17,9 +16,12 @@ exporter:
   # Used to set the FW_EXPORTER_API_KEY environment variable
   apiKeySecretRef:
     # Name of the secret containing the API key
-    name: 
+    name:  
     # Key in the secret that contains the API key
     key: 
+
+  zipCodes: []
+    # - 8230
 
   service:
     enable: true
@@ -27,4 +29,3 @@ exporter:
 
   ingress:
     enable: false
-
