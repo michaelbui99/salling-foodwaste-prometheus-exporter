@@ -10,7 +10,7 @@ The exporter publishes a metric for each `Clearance` for each `FoodWaste` return
 
 Metrics: 
 - `salling_group_food_waste_percent_discount`
-- `salling_group_food_waste_percent_new_price`
+- `salling_group_food_waste_new_price`
 - `salling_group_food_waste_discount`
 
 ## Examples
